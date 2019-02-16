@@ -1,0 +1,9 @@
+SELECT 
+  j.job_title,
+  cast(round(SUM(j.salary) / COUNT(p.id), 2) as float) as average_salary,
+  COUNT(p.id) as total_people,
+  cast(round(SUM(j.salary), 2) as float) as total_salary
+  FROM people p
+    JOIN job j on (p.id = j.id)
+  GROUP BY j.job_title
+  ORDER BY average_salary desc;
