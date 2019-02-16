@@ -1,0 +1,3 @@
+select id, coalesce(nullif(name, ''), '[product name not found]') as name, nullif(price, null) as price, coalesce(nullif(card_name, ''), '[card name not found]') as card_name, card_number, transaction_date
+from eusales
+where price > 50;
