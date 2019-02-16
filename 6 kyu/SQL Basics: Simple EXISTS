@@ -1,0 +1,4 @@
+select distinct d.id, d.name
+from departments d join sales s on (d.id = s.department_id)
+where exists (select * from sales where price > 98)
+order by d.id;
