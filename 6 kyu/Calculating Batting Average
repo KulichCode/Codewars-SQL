@@ -1,0 +1,4 @@
+select player_name, games, to_char(round(hits::numeric / at_bats::numeric, 3), 'FM0D000') as batting_average
+from yankees
+where at_bats >= 100
+order by batting_average desc;
