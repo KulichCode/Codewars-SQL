@@ -1,0 +1,8 @@
+select c.id as "category_id", c.category, t.title as "title", t.views as "views", t.id as "post_id"
+from (
+   select *,
+          rank() over (partition by p.category_id order by views desc, p.id) as rnk
+   from posts p
+) as t right join categories c on (t.category_id = c.id)
+where coalesce(rnk, 0) <= 2
+order by c.category, t.views desc, post_id;
