@@ -1,0 +1,8 @@
+select id, heads, legs, arms, tails,
+case when heads > arms or tails > legs
+then 'BEAST'
+else 'WEIRDO'
+end
+as "species"
+from top_half natural join bottom_half
+order by species;
