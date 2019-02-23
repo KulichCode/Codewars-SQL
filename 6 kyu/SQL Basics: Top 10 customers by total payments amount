@@ -1,0 +1,5 @@
+select customer_id, email, count(*) as "payments_count", cast(sum(amount) as float) as "total_amount"
+from customer natural join payment
+group by customer_id
+order by total_amount desc
+limit 10;
