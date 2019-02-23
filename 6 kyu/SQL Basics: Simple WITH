@@ -1,0 +1,10 @@
+with special_sales as 
+(
+select department_id as "id"
+from sales
+where price > 90
+)
+
+select id, name
+from departments
+where id in (select id from special_sales);
