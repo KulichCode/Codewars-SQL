@@ -1,0 +1,13 @@
+select title
+from
+(
+select title
+from film f join film_actor a on (f.film_id = a.film_id)
+where a.actor_id = 105
+) SC
+natural join
+(
+select title
+from film f join film_actor a on (f.film_id = a.film_id)
+where a.actor_id = 122
+) SN;
