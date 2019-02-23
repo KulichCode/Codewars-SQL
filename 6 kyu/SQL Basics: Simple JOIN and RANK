@@ -1,0 +1,4 @@
+select p.id, name, count(*) as "sale_count", 
+rank() over (partition by s.people_id order by count(*)) as "sale_rank"
+from people p join sales s on (p.id = s.people_id)
+group by s.people_id, p.id;
